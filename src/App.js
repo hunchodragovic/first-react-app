@@ -1,24 +1,27 @@
-import logo from "./logo.svg";
 import "./App.css";
-
 function App() {
+  const tasks = [
+    { id: 1 , title: "Practice Gratitude"},
+    { id: 2 , title: "Challenge Negative Thoughts"},
+    { id: 3 , title: "Pray to allah"},
+    { id: 4 , title: "Exercise Regularly"},
+    { id: 4 , title: "Social Life"}
+   
+  ]
+
+  const myTaskslist = tasks.map((task)=>{
+return (<li key={task.id}>{task.title}</li>)
+
+  })
+  console.log(myTaskslist);
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <h1>haha</h1>
-      </header>
+     
+<ul>
+  {myTaskslist}
+
+</ul>
     </div>
   );
 }
