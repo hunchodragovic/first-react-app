@@ -5,18 +5,22 @@ export default function MyForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "", // Add phone field to the state
+    phone: "",
+    termsAccepted: false, // Add a checkbox field to the state
+    gender: "", // Add gender field for the select input
   });
 
   // Handle input changes
   function handleChange(event) {
-    const { name, value } = event.target;
-    console.log(event.target);
-    
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    const name = event.target.name;
+    const value = event.target.type === "checkbox" ? event.target.checked : event.target.value;
+
+    setFormData(function (prevData) {
+      return {
+        ...prevData,
+        [name]: value, // Update the specific field dynamically
+      };
+    });
   }
 
   // Handle form submission
@@ -51,11 +55,35 @@ export default function MyForm() {
       <label>
         Phone:
         <input
-          type="tel" // Use "tel" type for phone numbers
+          type="tel"
           name="phone"
           value={formData.phone}
           onChange={handleChange}
         />
+      </label>
+      <hr />
+      <label>
+        Gender:
+        <select
+          name="gender"
+          value={formData.gender}
+          onChange={handleChange}
+        >
+          <option value="">-- Select Gender --</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+      <hr />
+      <label>
+        <input
+          type="checkbox"
+          name="termsAccepted"
+          checked={formData.termsAccepted} // Controlled by the state
+          onChange={handleChange} // Updates state on change
+        />
+        I accept the terms and conditions
       </label>
       <hr />
       <button type="submit">Submit</button>
