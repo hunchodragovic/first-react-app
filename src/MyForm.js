@@ -7,7 +7,10 @@ export default function MyForm() {
     email: "",
     phone: "",
     termsAccepted: false, // Add a checkbox field to the state
-    gender: "", // Add gender field for the select input
+    gender: "", 
+    status:""
+    
+    // Add gender field for the select input
   });
 
   // Handle input changes
@@ -86,6 +89,27 @@ export default function MyForm() {
         I accept the terms and conditions
       </label>
       <hr />
+      <label>
+  <input
+    type="radio"
+    name="status"
+    value="teacher"  // Use a fixed value for the radio button
+    checked={formData.status === "teacher"}  // Set checked based on state
+    onChange={handleChange}
+  />
+  Teacher
+</label>
+
+<label>
+  <input
+    type="radio"
+    name="status"
+    value="student"  // Use another value for the second option
+    checked={formData.status === "student"}  // Set checked based on state
+    onChange={handleChange}
+  />
+  Student
+</label>
       <button type="submit">Submit</button>
     </form>
   );
