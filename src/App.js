@@ -1,11 +1,12 @@
 import "./App.css";
-import MyButton from "./MyButton";
+
+import MyForm from "./MyForm";
 function App() {
 
   return (
-    <div className="App">
-     
-<MyButton/>
+    <div className="App" style={{paddingTop: "300px"}}>
+
+<MyForm/>
     </div>
   );
 }
