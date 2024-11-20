@@ -22,18 +22,21 @@ function App() {
     setDevices(newDevices);
   }
   function handleDeleteClick(id) {
-    const newDevices = [...devices];
+    const newDevices = devices.filter((device) => {
+      return device.id !== id
+    })
+    // const newDevices = [...devices];
 
-    let index = 0;
-    let selectedIndex = 0;
-    for (let device of newDevices) {
-      if (device.id == id) {
-        selectedIndex = index;
-      }
-      index++;
-    }
-    newDevices.splice(selectedIndex, 1);
-    setDevices(newDevices);
+    // let index = 0;
+    // let selectedIndex = 0;
+    // for (let device of newDevices) {
+    //   if (device.id == id) {
+    //     selectedIndex = index;
+    //   }
+    //   index++;
+    // }
+    // newDevices.splice(selectedIndex, 1);
+    // setDevices(newDevices);
   }
   const [deviceName, setDeviceName] = useState("");
   const [devices, setDevices] = useState([
